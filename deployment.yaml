@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer
+  template:
+    metadata:
+      labels:
+        app: consumer
+    spec:
+      containers:
+      # get an image from local docker registry called pythonrabbitkeda
+      - name: consumer
+        image: pythonrabbitkeda:latest
+        imagePullPolicy: Never
+

@@ -1,0 +1,15 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: rabbitmq-consumer-scaledobject
+spec:
+  scaleTargetRef:
+    name: consumer-deployment  # the name of your deployment
+  triggers:
+  - type: rabbitmq
+    metadata:
+      queueName: task_queue
+      host: amqp://172.18.0.4:5672/
+      mode: QueueLength
+      value: '5'  # number of messages needed to scale up
+      unsafeSsl: 'true'  # if you are using self-signed certificates
