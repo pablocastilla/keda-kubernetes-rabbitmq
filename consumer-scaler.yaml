@@ -9,7 +9,7 @@ spec:
   - type: rabbitmq
     metadata:
       queueName: task_queue
-      host: amqp://172.18.0.4:5672/
+      host: amqp://172.17.0.2:5672/
       mode: QueueLength
       value: '5'  # number of messages needed to scale up
       unsafeSsl: 'true'  # if you are using self-signed certificates

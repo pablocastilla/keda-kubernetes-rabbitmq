@@ -1,16 +1,15 @@
 from time import sleep
 import pika
 
-print(f"Starting consumer.py v2")
+print("Starting consumer.py")
 
 
 def callback(ch, method, properties, body):
     sleep(0.1)
     print(f"Received {body}")
 
-
 # Connect to RabbitMQ server
-connection = pika.BlockingConnection(pika.ConnectionParameters('172.18.0.4'))
+connection = pika.BlockingConnection(pika.ConnectionParameters('172.17.0.2'))
 channel = connection.channel()
 channel.basic_qos(prefetch_count=1)
 
